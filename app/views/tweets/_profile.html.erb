@@ -1,41 +1,41 @@
 <div class="column is-one-quarter">
 	<nav class="panel">
+		<% if current_user.nil? %>
+		<p class="panel-heading">You are not logged in</p>
+		<div class="panel-block">
+			<article class="media">
+				<div class="media-content">
+					<div class="content">
+						<p>
+							<strong>What are you waiting to do it?</strong><br />
+						</p>
+					</div>
+				</div>
+			</article>
+		</div>
+		<% else %>
 		<p class="panel-heading">Profile</p>
 		<div class="panel-block">
 			<article class="media">
 				<div class="media-left">
 					<figure class="image is-64x64">
-						<% if current_user.nil? %>
-							<%= image_tag "avatar.svg", alt: "user_defect", class: "avatar-img"%>
-						<% else %>
 							<% if current_user.avatar.attached? %>
 								<%= image_tag current_user.avatar, class: "avatar-img"%>
 							<% else %>
 								<%= image_tag "avatar.svg", alt: "user_defect", class: "avatar-img"%>
 						<% end %>
-					<% end %>
 					</figure>
 				</div>
 				<div class="media-content">
 					<div class="content">
-						<% if current_user.nil? %>
-						<p>
-							<strong>Name</strong><br />
-							<small>Username</small>
-						</p>
-						<% else %>
 						<p>
 							<strong><%= current_user.name %></strong><br />
 							<small><%= current_user.username %></small>
 						</p>
-						<% end %>
 					</div>
 				</div>
 			</article>
 		</div>
-		<% if current_user.nil? %>
-
-		<% else %>
 		<div class="panel-block">
 			<div class="level is-mobile">
 				<div class="level-item has-centered-text">
@@ -46,6 +46,6 @@
 				</div>
 			</div>
 		</div>
-		<% end %>
 	</nav>
+	<% end %>
 </div>

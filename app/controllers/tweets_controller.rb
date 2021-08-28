@@ -27,7 +27,7 @@ class TweetsController < ApplicationController
       if @tweet.save
         format.html { redirect_to root_path, notice: 'Tweet was successfully created.' }
       else
-        format.html { render :new, status: :unprocessable_entity }
+        format.html { redirect_to root_path, alert: 'Tweet is over 140 characters.' }
       end
     end
   end
@@ -38,7 +38,7 @@ class TweetsController < ApplicationController
       if @tweet.update(tweet_params)
         format.html { redirect_to root_path, notice: 'Tweet was successfully updated.' }
       else
-        format.html { render :edit, status: :unprocessable_entity }
+        format.html { redirect_to root_path, alert: 'Tweet is over 140 characters.' }
       end
     end
   end
@@ -46,10 +46,7 @@ class TweetsController < ApplicationController
   # DELETE /tweets/1 or /tweets/1.json
   def destroy
     @tweet.destroy
-    respond_to do |format|
-      format.html { redirect_to tweets_url, notice: 'Tweet was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to tweets_url, flash: { notice: 'Tweet was successfully destroyed' }
   end
 
   private
