@@ -1,57 +1,24 @@
 <div class="column">
 	<nav class="panel">
 		<p class="panel-heading">Users</p>
-	
+	<% User.all.each do |user| %>
 	<div class="panel-block">
 		<article class="media">
 			<div class="media-left">
-				<figure class="image is-32x32">
-          <%= image_tag "avatar.svg", alt: "user_defect", class: "avatar-img"%>
+				<figure class="image avatar-img--25">
+          <%= image_tag user.avatar, class: "avatar-img--25"%>
 				</figure>
 			</div>
 			<div class="media-content">
 				<div class="content">
 					<p>
-						<strong>John Smith</strong>
-						<small>@johnsmith</small>
+						<strong><%= user.name %></strong>
+						<small>@<%= user.username %></small>
 					</p>
 				</div>
 			</div>
 		</article>
 	</div>
-		<div class="panel-block">
-		<article class="media">
-			<div class="media-left">
-				<figure class="image is-32x32">
-          <%= image_tag "avatar.svg", alt: "user_defect", class: "avatar-img"%>
-				</figure>
-			</div>
-			<div class="media-content">
-				<div class="content">
-					<p>
-						<strong>John Smith</strong>
-						<small>@johnsmith</small>
-					</p>
-				</div>
-			</div>
-		</article>
-	</div>
-		<div class="panel-block">
-		<article class="media">
-			<div class="media-left">
-				<figure class="image is-32x32">
-          <%= image_tag "avatar.svg", alt: "user_defect", class: "avatar-img"%>
-				</figure>
-			</div>
-			<div class="media-content">
-				<div class="content">
-					<p>
-						<strong>John Smith</strong>
-						<small>@johnsmith</small>
-					</p>
-				</div>
-			</div>
-		</article>
-	</div>
+	<% end %>
 	</nav>
 </div>
